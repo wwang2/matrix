@@ -1,0 +1,27 @@
+metric: rank
+direction: minimize
+sota: 32
+lower_bound: 20
+n: 2
+m: 4
+p: 5
+tensor_shape: [8, 20, 10]
+score_formula: "32 / rank"  # higher is better, 1.0 = match SOTA
+validity: "np.array_equal(einsum('ir,jr,kr->ijk', U, V, W), T)"
+coefficient_type: "real (must reconstruct exactly in float32, typically half-integers via STE rounding)"
+
+significance:
+  min_improvement: 1  # integer metric, any drop of 1 is significant
+  rationale: "rank is integer — any decrement is a genuine improvement"
+
+sanity_checks:
+  - name: "trivial_bad"
+    description: "All-zeros rank-1 decomposition"
+    expected: "invalid"
+  - name: "naive_r40"
+    description: "Explicit rank-40 decomposition from tensor entries"
+    expected_rank: 40
+    expected_valid: true
+  - name: "determinism"
+    description: "Same input twice → same score"
+    expected: "identical"
