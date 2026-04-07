@@ -1,0 +1,20 @@
+{
+  "question": "Find minimal tensor rank R for the (2,4,5) matrix multiplication tensor T_ijk = sum_r U_ir V_jr W_kr",
+  "references": [
+    "openevolve/examples/alphaevolve_math_problems/matmul",
+    "Strassen algorithm (1969) - recursive fast matrix multiplication",
+    "Algebraic complexity theory - bilinear complexity and tensor rank",
+    "AlphaEvolve (2025) - evolutionary algorithm for matrix multiplication"
+  ],
+  "budget": "unspecified",
+  "status": "setup",
+  "setup_phase": 1,
+  "metric": "rank",
+  "direction": "minimize",
+  "sota": 32,
+  "eval_version": null,
+  "best_metric": null,
+  "n": 2,
+  "m": 4,
+  "p": 5
+}
