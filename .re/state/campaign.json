@@ -8,7 +8,7 @@
   ],
   "budget": "unspecified",
   "status": "setup",
-  "setup_phase": 1,
+  "setup_phase": 3,
   "metric": "rank",
   "direction": "minimize",
   "sota": 32,
@@ -16,5 +16,31 @@
   "best_metric": null,
   "n": 2,
   "m": 4,
-  "p": 5
+  "p": 5,
+  "subagent_backend": {
+    "host": "claude-code",
+    "openrouter_enabled": true,
+    "agents": {
+      "verifier": {
+        "runtime": "opencode",
+        "model": "openrouter/anthropic/claude-haiku-4.5"
+      },
+      "debate-swarm": {
+        "runtime": "opencode",
+        "models": [
+          "openrouter/anthropic/claude-haiku-4.5",
+          "openrouter/google/gemini-2.5-flash",
+          "openrouter/deepseek/deepseek-v3"
+        ]
+      },
+      "brainstorm-panel": {
+        "runtime": "opencode",
+        "models": [
+          "openrouter/openai/gpt-5",
+          "openrouter/google/gemini-2.5-pro",
+          "openrouter/anthropic/claude-opus-4-6"
+        ]
+      }
+    }
+  }
 }
